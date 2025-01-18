@@ -1,0 +1,15 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+      font-family: 'Bower';
+      /* font-style: normal;
+      font-weight: 400; */
+      font-display: swap;
+      src: url('../public/fonts/Bower-Bold/Bower-Bold.woff2') format('woff2');
+    }
+  }
