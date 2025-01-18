@@ -6,5 +6,6 @@ export default defineConfig({
     build: {
       outDir: '../docs',
       emptyOutDir: true
-    }
+    },
+    base:"/10nalytics_Hackathon/"
   });
