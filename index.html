@@ -1,39 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://db.onlinewebfonts.com/c/40fccfffa7bc57048f06f7420d6fe7ae?family=Bower-Bold" rel="stylesheet">
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js"></script>
-  <style>
-    [x-cloak] { display: none !important; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://db.onlinewebfonts.com/c/40fccfffa7bc57048f06f7420d6fe7ae?family=Bower-Bold"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.5/cdn.min.js"
+    ></script>
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
 
-    @keyframes smoothBg {
-    from {
-      background-position: 50% 50%, 50% 50%;
-    }
-    to {
-      background-position: 350% 50%, 350% 50%;
-    }
-  }
+      @keyframes smoothBg {
+        from {
+          background-position: 50% 50%, 50% 50%;
+        }
+        to {
+          background-position: 350% 50%, 350% 50%;
+        }
+      }
 
-  .animate-smoothBg {
-    animation: smoothBg 60s linear infinite;
-  }
+      .animate-smoothBg {
+        animation: smoothBg 60s linear infinite;
+      }
 
-  .hero-mask {
-    mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
-  }
+      .hero-mask {
+        mask-image: radial-gradient(
+          ellipse at 100% 0%,
+          black 40%,
+          transparent 70%
+        );
+        -webkit-mask-image: radial-gradient(
+          ellipse at 100% 0%,
+          black 40%,
+          transparent 70%
+        );
+      }
 
-  /* Custom property for stripe color */
-  :root {
-    --stripe-color: #000;
-  }
-  </style>
-  <link rel="stylesheet" crossorigin href="/10nalytics_Hackathon/assets/index-D8nWwM9y.css">
-</head>
-<body x-data="{
+      /* Custom property for stripe color */
+      :root {
+        --stripe-color: #000;
+      }
+    </style>
+    <link rel="stylesheet" crossorigin href="/10nalytics_Hackathon/assets/index-D8nWwM9y.css">
+  </head>
+  <body
+    x-data="{
     showNav: false,
     scrollProgress: 0,
     introInView: false,
@@ -59,7 +82,7 @@
         content: `Due to the varying scales of the metrics—such as deaths at age zero, under-five mortality rates,
          and vaccination coverage—comparing different countries can be challenging. 
          To address this, I applied min-max scaling to normalize the metrics between 0 and 1.
-          The visualizationreveals the following: Nigeria has the highest estimated maternal deaths and infant deaths at age zero. West African countries, including Sierra Leone, Nigeria, Niger, and Chad, generally exhibit high under-five mortality rates. In terms of vaccination coverage, Ghana and Gambia lead with very high rates, 
+          The visualization reveals the following: Nigeria has the highest estimated maternal deaths and infant deaths at age zero. West African countries, including Sierra Leone, Nigeria, Niger, and Chad, generally exhibit high under-five mortality rates. In terms of vaccination coverage, Ghana and Gambia lead with very high rates, 
         while Nigeria, Equatorial Guinea, and Chad lag significantly behind.`,
         image: './images/nigeria_can_do_better.png',
         altText: 'Comparison across African countries'
@@ -115,146 +138,219 @@
         this.scrollProgress = (winScroll / height) * 100;
       });
     }
-  }">
-  
-  <!-- Navbar -->
-  <nav x-cloak
-       x-show="showNav"
-       x-transition:enter="transition ease-out duration-300"
-       x-transition:enter-start="opacity-0"
-       x-transition:enter-end="opacity-100"
-       x-transition:leave="transition ease-in duration-300"
-       x-transition:leave-start="opacity-100"
-       x-transition:leave-end="opacity-0"
-       class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
-    <div class="container mx-auto px-4 py-3 relative h-20 flex">
-      <div class=" font-bower text-black my-auto">10Analytics 2024</div>
-      <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gray-100">
-        <div class="h-full bg-blue-500 transition-all duration-150"
-             :style="`width: ${scrollProgress}%`"></div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section id="hero" class="relative w-full h-[800px] overflow-hidden bg-black">
-    <!-- Background animation wrapper -->
-    <div class="absolute inset-0 w-full h-full">
-      <!-- Animated background with stripes and gradient -->
-      <div class="absolute inset-0 w-full h-full 
-        bg-[length:300%_200%] bg-center
-        animate-smoothBg
-        hero-mask
-        blur-[10px] opacity-50 saturate-[200%]
-        [background-image:repeating-linear-gradient(100deg,var(--stripe-color)_0%,var(--stripe-color)_7%,transparent_10%,transparent_12%,var(--stripe-color)_16%),repeating-linear-gradient(100deg,#60a5fa_10%,#e879f9_15%,#60a5fa_20%,#5eead4_25%,#60a5fa_30%)]">
-        
-        <!-- After element for additional animation layer -->
-        <div class="absolute inset-0 w-full h-full 
-          bg-[length:200%_100%] bg-fixed
-          mix-blend-difference
-          animate-smoothBg
-          [background-image:repeating-linear-gradient(100deg,var(--stripe-color)_0%,var(--stripe-color)_7%,transparent_10%,transparent_12%,var(--stripe-color)_16%),repeating-linear-gradient(100deg,#60a5fa_10%,#e879f9_15%,#60a5fa_20%,#5eead4_25%,#60a5fa_30%)]">
+  }"
+  >
+    <!-- Navbar -->
+    <nav
+      x-cloak
+      x-show="showNav"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in duration-300"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50"
+    >
+      <div class="container mx-auto px-4 py-3 relative h-20 flex">
+        <div class="font-bower text-black my-auto">10Analytics 2024</div>
+        <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gray-100">
+          <div
+            class="h-full bg-blue-500 transition-all duration-150"
+            :style="`width: ${scrollProgress}%`"
+          ></div>
         </div>
       </div>
-    </div>
-  
-    <!-- Content -->
-    <div class="relative z-10 flex items-center justify-center w-full h-full">
-      <div class="py-8 px-4 max-w-screen-xl text-center lg:py-16 lg:px-12">
-        <h1 class="font-bower mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl mix-blend-difference">
-          10nalytics Hackathon Submission 2024
-        </h1>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Executive summary -->
-  <section id="intro" class="bg-white flex">
-    <div class="py-8 px-4 max-w-5xl text-justify lg:py-16 lg:px-1 m-auto">
-      <h1 class="mb-4 text-lg tracking-wide sm:leading-none md:leading-10 font-light text-gray-900 md:text-lg lg:text-xl">
-        <p>This report begins by exploring the relationship between vaccination coverage and 
-        child mortality in Africa. The analysis reveals a significant negative correlation between vaccination rates and mortality, with a correlation coefficient of -0.25 at a significance level of 0.01 (p = 0.00).</p><br> 
-        
-        <p>These findings show role of immunization in reducing under-five (U5) and under-fifteen (U15) mortality rates, underscoring the need for robust vaccination campaigns to save lives and achieve Sustainable Development Goal 3 (Good Health and Well-Being).
-        </p><br>
-
-<p>
-        The study also identifies distinct age-based trends in mortality causes, which can inform tailored healthcare interventions. Normalized comparisons across countries reveal disparities in vaccination coverage and mortality rates, with Ghana and Gambia excelling in immunization, while Nigeria, Equatorial Guinea, and Chad face significant challenges.
-      </p><br> 
-        Despite these discouraging figures, the consistent decline in U5 mortality rates since 2000 across Africa indicates progress in infant mortality, aided by interventions such as malaria eradication programs. Malaria's transition from being the leading cause of death to a less prominent one demonstrates the success of concerted 
-        global efforts and highlights the potential of similar strategies for other health priorities
-      </h1>
-    </div>
-
- 
-  </section>
-  <div class="w-full border-t border-gray-300"></div>
-
-  <!-- Dynamic Content Sections -->
-  <template x-for="(section, index) in sections" :key="index">
-    <section :class="`flex flex-col md:flex-row gap-8 py-12 px-4 md:px-40 max-w-full mx-auto ${index % 2 === 1 ? 'bg-blue-50' : 'bg-white'}`">
-      <!-- Content Column -->
-      <div class="w-full md:w-1/3">
-        <div class="sticky top-4">
-          <h2 class=" font-bower text-2xl font-bold mb-6" x-text="section.title"></h2>
-          <p class="text-gray-700 leading-relaxed" x-text="section.content"></p>
+    <!-- Hero -->
+    <section
+      id="hero"
+      class="relative w-full h-[800px] overflow-hidden bg-black"
+    >
+      <!-- Background animation wrapper -->
+      <div class="absolute inset-0 w-full h-full">
+        <!-- Animated background with stripes and gradient -->
+        <div
+          class="absolute inset-0 w-full h-full bg-[length:300%_200%] bg-center animate-smoothBg hero-mask blur-[10px] opacity-50 saturate-[200%] [background-image:repeating-linear-gradient(100deg,var(--stripe-color)_0%,var(--stripe-color)_7%,transparent_10%,transparent_12%,var(--stripe-color)_16%),repeating-linear-gradient(100deg,#60a5fa_10%,#e879f9_15%,#60a5fa_20%,#5eead4_25%,#60a5fa_30%)]"
+        >
+          <!-- After element for additional animation layer -->
+          <div
+            class="absolute inset-0 w-full h-full bg-[length:200%_100%] bg-fixed mix-blend-difference animate-smoothBg [background-image:repeating-linear-gradient(100deg,var(--stripe-color)_0%,var(--stripe-color)_7%,transparent_10%,transparent_12%,var(--stripe-color)_16%),repeating-linear-gradient(100deg,#60a5fa_10%,#e879f9_15%,#60a5fa_20%,#5eead4_25%,#60a5fa_30%)]"
+          ></div>
         </div>
       </div>
-      
-      <!-- Image Column -->
-      <div class="w-full md:w-2/3">
-        <div class="sticky top-4">
-          <img 
-            :src="section.image" 
-            :alt="section.altText"
-            class="w-full rounded-lg shadow-lg"
+
+      <!-- Content -->
+      <div class="relative z-10 flex items-center justify-center w-full h-full">
+        <div class="py-8 px-4 max-w-screen-xl text-center lg:py-16 lg:px-12">
+          <h1
+            class="font-bower mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl mix-blend-difference"
           >
+            10nalytics Hackathon Submission 2024
+          </h1>
         </div>
       </div>
     </section>
-  </template>
 
-<!-- Recommendation -->
-<div class="w-full border-t border-gray-300"></div>
-<section id="recommendation" class="bg-white flex">
-  <div class="py-8 px-4 max-w-5xl text-justify lg:py-16 lg:px-1 m-auto">
-    <div class="mb-4 text-lg tracking-wide lsm:leading-none md:leading-10 font-light text-gray-900 md:text-lg lg:text-xl">
-      <p>
-      To address the issues raised above,
-    policymakers should prioritize comprehensive vaccination programs, especially in countries like Nigeria and Chad with low coverage. This involves partnering with international organizations for funding and equitable vaccine distribution, and employing community engagement strategies to overcome barriers and increase immunization uptake.
-  </p><br>
+    <!-- Executive summary -->
+    <section id="intro" class="bg-white flex">
+      <div class="py-8 px-4 max-w-5xl text-justify lg:py-16 lg:px-1 m-auto">
+        <h1
+          class="mb-4 text-lg tracking-wide sm:leading-none md:leading-10 font-light text-gray-900 md:text-lg lg:text-xl"
+        >
+          <p>
+            This report begins by exploring the relationship between vaccination
+            coverage and child mortality in Africa. The analysis reveals a
+            significant negative correlation between vaccination rates and
+            mortality, with a correlation coefficient of -0.25 at a significance
+            level of 0.01 (p = 0.00).
+          </p>
+          <br />
 
-<p>
-Improving healthcare infrastructure in regions with high maternal and infant mortality is also essential. Strengthening health systems ensures timely access to vaccines and medical services, supported by investments in training healthcare workers and equipping facilities.
-</p><br>
+          <p>
+            These findings show role of immunization in reducing under-five (U5)
+            and under-fifteen (U15) mortality rates, underscoring the need for
+            robust vaccination campaigns to save lives and achieve Sustainable
+            Development Goal 3 (Good Health and Well-Being).
+          </p>
+          <br />
 
-<p>
-Age-specific disease research and interventions should be prioritized to allocate resources efficiently and design tailored public health campaigns. This approach addresses the unique health risks faced by different demographic groups.
-</p><br>
+          <p>
+            The study also identifies distinct age-based trends in mortality
+            causes, which can inform tailored healthcare interventions.
+            Normalized comparisons across countries reveal disparities in
+            vaccination coverage and mortality rates, with Ghana and Gambia
+            excelling in immunization, while Nigeria, Equatorial Guinea, and
+            Chad face significant challenges.
+          </p>
+          <br />
+          Despite these discouraging figures, the consistent decline in U5
+          mortality rates since 2000 across Africa indicates progress in infant
+          mortality, aided by interventions such as malaria eradication
+          programs. Malaria's transition from being the leading cause of death
+          to a less prominent one demonstrates the success of concerted global
+          efforts and highlights the potential of similar strategies for other
+          health priorities
+        </h1>
+      </div>
+    </section>
+    <div class="w-full border-t border-gray-300"></div>
 
-Building on the success of malaria eradication, stakeholders should replicate evidence-based strategies to combat other leading causes of death, such as lower respiratory infections. Collaboration between governments, NGOs, and private entities is key to sustaining progress in reducing child mortality and improving health outcomes.
-</div>
- 
-  </div>
+    <!-- Dynamic Content Sections -->
+    <template x-for="(section, index) in sections" :key="index">
+      <section
+        :class="`flex flex-col md:flex-row gap-8 py-12 px-4 md:px-40 max-w-full mx-auto ${index % 2 === 1 ? 'bg-blue-50' : 'bg-white'}`"
+      >
+        <!-- Content Column -->
+        <div class="w-full md:w-1/3">
+          <div class="sticky top-4">
+            <h2
+              class="font-bower text-2xl font-bold mb-6"
+              x-text="section.title"
+            ></h2>
+            <p style="
+            font-family: 'Montserrat', sans-serif;
+          "
+              class="text-gray-700 leading-relaxed"
+              x-text="section.content"
+            ></p>
+          </div>
+        </div>
 
+        <!-- Image Column -->
+        <div class="w-full md:w-2/3">
+          <div class="sticky top-4">
+            <img
+              :src="section.image"
+              :alt="section.altText"
+              class="w-full rounded-lg shadow-lg"
+            />
+          </div>
+        </div>
+      </section>
+    </template>
 
-</section>
+    <!-- Recommendation -->
+    <div class="w-full border-t border-gray-300"></div>
+    <section id="recommendation" class="bg-white flex">
+      <div class="py-8 px-4 max-w-5xl text-justify lg:py-16 lg:px-1 m-auto">
+        <div
+          class="mb-4 text-lg tracking-wide lsm:leading-none md:leading-10 font-light text-gray-900 md:text-lg lg:text-xl"
+        >
+          <p>
+            To address the issues raised above, policymakers should prioritize
+            comprehensive vaccination programs, especially in countries like
+            Nigeria and Chad with low coverage. This involves partnering with
+            international organizations for funding and equitable vaccine
+            distribution, and employing community engagement strategies to
+            overcome barriers and increase immunization uptake.
+          </p>
+          <br />
 
-<footer x-cloak
-         x-show="showFooter"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0"
-         x-transition:enter-end="opacity-100"
-         x-transition:leave="transition ease-in duration-300"
-         x-transition:leave-start="opacity-100"
-         x-transition:leave-end="opacity-0"
-         class="fixed bottom-0 left-0 right-0 bg-white z-50 border-dashed border-t-2 border-gray-950">
-    <div class="container mx-auto px-4 py-3 relative h-20 flex items-center justify-between" >
-      <div class="text-black text-xs">Click <a href="https://github.com/JoshuaOlubori/10nalytics_Hackathon"><span class="hover:text-blue-900" style="text-decoration: underline;">here for code</span></a>.<br> Report style inspired by Mckinsey Insights</div>
-      <div class="text-black text-xs">Contact: <a href="https://www.linkedin.com/in/joshua-edun/" target="_blank" class="hover:text-blue-900"  style="text-decoration: underline;">linkedin.com/in/joshua-edun</a>    </div>
-    </div>
-  </footer>
+          <p>
+            Improving healthcare infrastructure in regions with high maternal
+            and infant mortality is also essential. Strengthening health systems
+            ensures timely access to vaccines and medical services, supported by
+            investments in training healthcare workers and equipping facilities.
+          </p>
+          <br />
 
+          <p>
+            Age-specific disease research and interventions should be
+            prioritized to allocate resources efficiently and design tailored
+            public health campaigns. This approach addresses the unique health
+            risks faced by different demographic groups.
+          </p>
+          <br />
 
-</body>
+          Building on the success of malaria eradication, stakeholders should
+          replicate evidence-based strategies to combat other leading causes of
+          death, such as lower respiratory infections. Collaboration between
+          governments, NGOs, and private entities is key to sustaining progress
+          in reducing child mortality and improving health outcomes.
+        </div>
+      </div>
+    </section>
+
+    <footer
+      x-cloak
+      x-show="showFooter"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in duration-300"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="fixed bottom-0 left-0 right-0 bg-white z-50 border-dashed border-t-2 border-gray-950"
+    >
+      <div
+        class="container mx-auto px-4 py-3 relative h-20 flex items-center justify-between font-thin" style="
+        font-family: 'Montserrat', sans-serif;
+      "
+      >
+        <div class="text-black text-xs">
+          Click
+          <a href="https://github.com/JoshuaOlubori/10nalytics_Hackathon"
+            ><span
+              class="hover:text-blue-900"
+              style="text-decoration: underline"
+              >here for code</span
+            ></a
+          >.<br />
+          Report style inspired by Mckinsey Insights
+        </div>
+        <div class="text-black text-xs">
+          Contact:
+          <a
+            href="https://www.linkedin.com/in/joshua-edun/"
+            target="_blank"
+            class="hover:text-blue-900"
+            style="text-decoration: underline"
+            >linkedin.com/in/joshua-edun</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
