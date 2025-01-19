@@ -3,7 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap'); */
 @layer base {
     @font-face {
       font-family: 'Bower';
